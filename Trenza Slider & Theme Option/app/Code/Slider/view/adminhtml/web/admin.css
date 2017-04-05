@@ -1,0 +1,3 @@
+.data-grid .data-grid-filters select, .data-grid .data-grid-filters input[type="text"] {
+    display: none;
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="slider" translate="label" sortOrder="130" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Slider</label>
+            <tab>general</tab>
+            <resource>Trenza_Slider::config_slider</resource>
+            <group id="view" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Slider View Settings</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Slider On Frontend</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="items_per_page" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Slider Per Page</label>
+                    <comment>Empty value is the same as default 20.</comment>
+                </field>
+                <field id="days_difference" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Number of days since a post has been marked as recently added</label>
+                    <comment>Empty value is the same as default 3.</comment>
+                </field>
+            </group>
+            <group id="email" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Options</label>
+                <field id="send_email_to_customer" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send email to customer</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="recipient_email" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Emails To</label>
+                    <validate>validate-email</validate>
+                </field>
+                <field id="sender_email_identity" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                </field>
+                <field id="email_template" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+		
+		
+		
+		
+		
+		
+		<tab id="slider_tab" translate="label" sortOrder="1000">
+            <label>Thenza Slider Options</label>
+        </tab>
+        <section id="slider_config" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Configuration</label>
+            <tab>slider_tab</tab>
+            <resource>Trenza_Slider::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Slider Configurations</label>
+				<field id="top_slider" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+				   <label>Top Slider</label>        
+				   <source_model>Trenza\Slider\Model\Config\Source\Topslider</source_model>
+				   <comment>Body top slider</comment>
+				</field>
+				<field id="animation" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				   <label>Slider Animation</label>        
+				   <source_model>Trenza\Slider\Model\Config\Source\Animation</source_model>
+				   <comment>Slide Animation</comment>
+				</field>
+				<field id="slider_speed" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Slideshow Speed</label>
+                    <comment>Ex: 7000</comment>
+                </field>
+				<field id="animation_loop" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+				   <label>Animation Loop</label>        
+				   <source_model>Trenza\Slider\Model\Config\Source\Animationloop</source_model>
+				   <comment>Animation Loop</comment>
+				</field>
+				
+				<field id="slideshow" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+				   <label>Arrow Show</label>        
+				   <source_model>Trenza\Slider\Model\Config\Source\Slideshow</source_model>
+				   <comment>Arrow</comment>
+				</field>
+				
+				<field id="controlnav" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+				   <label>Paging Control</label>        
+				   <source_model>Trenza\Slider\Model\Config\Source\Controlnav</source_model>
+				   <comment>Paging</comment>
+				</field>
+				
+				<field id="directionnav" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+				   <label>Slide Show</label>        
+				   <source_model>Trenza\Slider\Model\Config\Source\Directionnav</source_model>
+				   <comment>Slideshow</comment>
+				</field>
+            </group>
+        </section>
+    </system>
+</config>

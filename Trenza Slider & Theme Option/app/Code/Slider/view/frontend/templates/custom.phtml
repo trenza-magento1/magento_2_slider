@@ -1,0 +1,60 @@
+<?php
+//$test = $this->helper('Trenza\Test\Helper\Data')->getConfig('option_section/general/animation_loop');
+
+?>
+<?php
+$animation_loop = $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/animation_loop');
+$animation_loop = $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/animation_loop')? $animation_loop:'true';
+$slider_speed= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/slider_speed');
+$slider_speed = $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/slider_speed')? $slider_speed:'7000';
+$animation= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/animation');
+$animation= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/animation')? $animation:'slide';
+$top_slider= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/top_slider');
+$top_slider= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/top_slider')? $top_slider:'enable';
+$slideshow= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/slideshow');
+$slideshow= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/slideshow')? $slideshow:'true';
+$controlnav= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/controlnav');
+$controlnav= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/controlnav')? $controlnav:'true';
+$directionnav= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/directionnav');
+$directionnav= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/directionnav')? $directionnav:'true';
+
+?>
+
+<?php 
+if($top_slider=='disable'){
+
+}else{
+echo $this->getLayout()
+          ->createBlock('Trenza\Slider\Block\Slider')
+          ->setTemplate('Trenza_Slider::slider2.phtml')
+          ->toHtml();
+}
+
+
+		  ?>
+		  
+		  <?php 
+/*echo $this->getLayout()
+          ->createBlock('Trenza\custom\Block\Slider')
+          ->setTemplate('Trenza_Test::custom.phtml')
+          ->toHtml();*/
+		  ?>
+		  
+
+<script>// <![CDATA[ 
+require([ 'jquery' ], function ($) { 
+jQuery(window).load(function() {
+
+  jQuery('.flexslider').flexslider({
+    animation: "<?php echo $animation;?>",
+	controlNav: <?php echo $controlnav;?>,  
+	directionNav: <?php echo $directionnav;?>,
+	slideshowSpeed: <?php echo $slider_speed;?>,
+	animationLoop: <?php echo $animation_loop;?>,
+	slideshow: <?php echo $slideshow;?>
+	
+  });
+}); 
+});
+// ]]> </script>
+

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Trenza_Slider::slider" title="Slider" module="Trenza_Slider" sortOrder="30" resource="Trenza_Slider::slider"/>
+        <add id="Trenza_Slider::slider_manage" title="Slider Management" module="Trenza_Slider" sortOrder="10" parent="Trenza_Slider::slider" action="slider/index/" resource="Trenza_Slider::manage"/>
+		<add id="Trenza_Slider::slider_configuration" title="Slider Configuration" module="Trenza_Slider" sortOrder="11" parent="Trenza_Slider::slider" action="adminhtml/system_config/edit/section/slider_config/" resource="Trenza_Slider::slider_config_configuration"/>
+		
+
+    </menu>
+</config>

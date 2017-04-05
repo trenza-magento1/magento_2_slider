@@ -1,0 +1,30 @@
+<?php $_slider = $this->getCollection(); ?>
+<?php if ($_slider->getSize()): ?>
+<div class="slider_list_view">
+<div class="flexslider">
+    <ul class="slides">
+    <?php foreach ($_slider as $sliderItem): ?>
+        
+            <?php if ($imageUrl = $this->getImageUrl($sliderItem, 100)): ?>
+               <li>
+               <a href="<?php echo $this->escapeHtml($sliderItem->getLink()); ?>">
+			   <img src="<?php echo $imageUrl ?>" alt="<?php echo $this->escapeHtml($sliderItem->getName()); ?>" />
+				 <div class="flex-caption"><?php echo html_entity_decode($this->escapeHtml($sliderItem->getContent())); ?></div>
+			   </li>
+			 	</a>
+			<?php endif ?>	
+	<?php endforeach; ?>
+	</ul>
+</div>
+</div>
+
+<?php else: ?>
+    <div class="message info empty"><span><?php echo __('You have no Slider.'); ?></span></div>
+<?php endif ?>
+
+<?php 
+
+//echo $slider_speed = $this->helper('Trenza\Slider\Helper\Data')->getConfig('system_config/general/slider_speed').'hello1';
+
+//$bgcolor = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('option_section/general/background_color');
+?>

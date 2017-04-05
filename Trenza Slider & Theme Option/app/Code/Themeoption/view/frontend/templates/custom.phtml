@@ -1,0 +1,57 @@
+<?php
+$typography = array('p','h1','h2','h3','h4','h5','h6');
+
+$om = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $om->get('Magento\Store\Model\StoreManagerInterface');
+$uploadurl = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+
+$bgcolor = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('option_section/general/background_color');
+$bgimage = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('option_section/general/background_image');
+$bgposition = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('option_section/general/background_position');
+$bgrepeat = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('option_section/general/background_repeat');
+
+$css = '';
+
+$family = '';
+foreach($typography as $typo){
+    $fonyfamily = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('heading_section/heading'.$typo.'/font_family_'.$typo);
+    if($fonyfamily)
+    $family .= $fonyfamily.'|';
+}
+
+if($family){
+    $family = rtrim($family,'|');
+    $css .= "<link href='https://fonts.googleapis.com/css?family=".urlencode($family)."' rel='stylesheet' type='text/css'>";
+}
+
+if($bgimage){
+    $bgimage = 'url('.$uploadurl.'background/'.$bgimage.') '.$bgrepeat.' '.$bgposition.' ';  
+}else{
+    $bgimage = '';
+}
+
+$css .= '<style type="text/css">';
+if($bgimage || $bgcolor)
+$css .= 'body{background: '.$bgcolor.' '.$bgimage.';} ';
+foreach($typography as $typo){
+    
+    $family = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('heading_section/heading'.$typo.'/font_family_'.$typo);
+    $size = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('heading_section/heading'.$typo.'/font_size_'.$typo);
+    $color = $this->helper('Trenza\Themeoption\Helper\Data')->getConfig('heading_section/heading'.$typo.'/font_color_'.$typo);
+    
+    if($family)
+    $family = 'font-family: '.$family.'; ';
+    
+    if($size)
+    $size = 'font-size: '.$size.'px; ';
+    
+    if($color)
+    $color = 'color: '.$color.'; ';
+    
+    if($color || $size || $family)
+    $css .= $typo.'{'.$family.''.$size.''.$color.'}';
+}
+$css .= '</style>';
+
+echo $css;
+?>

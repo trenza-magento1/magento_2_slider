@@ -1,0 +1,48 @@
+<?php
+$animation_loop = $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/animation_loop');
+$slider_speed= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/slider_speed');
+$animation= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/animation');
+$top_slider= $this->helper('Trenza\Test\Helper\Data')->getConfig('slider_config/general/top_slider');
+
+?>
+
+<?php 
+if($top_slider=='disable'){
+
+}else{
+echo $this->getLayout()
+          ->createBlock('Trenza\Slider\Block\Slider')
+          ->setTemplate('Trenza_Slider::slider2.phtml')
+          ->toHtml();
+}
+
+
+		  ?>
+		  
+		  <?php 
+/*echo $this->getLayout()
+          ->createBlock('Trenza\custom\Block\Slider')
+          ->setTemplate('Trenza_Test::custom.phtml')
+          ->toHtml();*/
+		  ?>
+		  
+
+<script>// <![CDATA[ 
+require([ 'jquery' ], function ($) { 
+jQuery(window).load(function() {
+
+  jQuery('.flexslider').flexslider({
+    animation: "<?php echo $animation;?>",
+	controlNav: true,  
+	directionNav: true,
+	slideshowSpeed: <?php echo $slider_speed;?>,
+	animationLoop: <?php echo $animation_loop;?>
+	
+  });
+}); 
+});
+// ]]> </script>
+
+
+
+
